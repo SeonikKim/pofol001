@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #000;
+  /* 부모 엘리먼트의 색상을 상속합니다 */
+  text-decoration: none;
+  /* 밑줄을 제거합니다 */
+}
+
+/* Link가 마우스 위로 올라갔을 때 스타일을 설정합니다 */
+a:hover {
+  color: #FFF;
+  /* 오버시 더 진한 색상으로 변경 */
+  text-decoration: underline;
+  /* 밑줄을 추가합니다 */
+}
+
+body {
+  background-color: #1e1e1e;
+  /* 어두운 배경색 */
+  color: #fff;
+  /* 텍스트 색상 */
+  font-family: Arial, sans-serif;
+  /* 원하시는 폰트로 변경 가능 */
+  margin: 0;
+  padding: 0;
+}
+
+.MainWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding: 20px;
+  /* 여백 추가 */
+}
+
+.Title {
+  font-size: 24px;
+  text-align: left;
+  width: 100%;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.Items_Wrap {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Item {
+  font-size: 20px;
+  text-align: left;
+  width: 80%;
+  margin-top: 20px;
+  border: 1px solid #444;
+  /* 더 어두운 테두리 색상 */
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #333;
+  /* 더 어두운 배경색 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* 약간의 그림자 추가 */
+  display: flex;
+  flex-direction: column;
+}
+
+.WithBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ItemTitle {
+  background: #444;
+  /* 더 어두운 타이틀 배경색 */
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.defBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #444;
+  /* 더 어두운 버튼 배경색 */
+  border: 2px solid #fff;
+  /* 더 밝은 테두리 색상 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.defBtn:hover {
+  background: #222;
+  /* 더 어두운 버튼 배경색 */
+}
+
+.thx {
+  font-size: 20px;
+  text-align: left;
+  width: 100%;
+  padding-left: 20px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+/* 넷플릭스 CSS */
+.NetFlixWrap {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.NetFlixWrap .NF-Img {
+  position: relative;
+  width: 100%;
+}
+
+.NetFlixWrap .NF-Background {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.NetFlixWrap .NF-Shade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+width: 100%;
+height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 80%);
+}
+
+.NetFlixWrap .NF-Shade .NF-Inner {
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+}
+.NetFlixWrap .NF-Shade .NF-SubInner1 {
+  max-width: (100% - 3rem);
+  margin-top: 10px;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin: auto;
+}
+.NetFlixWrap .NF-Shade .NF-SubInner {
+  margin-top: 10px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.NetFlixWrap .NF-BackgroundImage {
+  width: 100vw;
+  height: auto;
+  display: block;
+  min-height: 30rem;
+}
+
+
+.NetFlixWrap .NF-Header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 1rem 2rem;
+  align-items: center;
+  z-index: 999;
+  white-space: nowrap;
+}
+
+.NetFlixWrap .NF-Title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-right: auto;
+}
+
+.NetFlixWrap .NF-Lan-Select {
+  height: 30px;
+  width: 6rem;
+  background: transparent;
+  border: 1px solid #dbdbdb;
+  color: #fff;
+  border-radius: 3px;
+  margin: 0 2rem;
+}
+
+.NetFlixWrap .NF-Login {
+  height: 30px;
+  width: 4rem;
+  background: #E50914;
+  color: white;
+  border-radius: 3px;
+  margin: 0;
+}
+.NetFlixWrap .NF-Login:hover {
+  background: rgb(193,17,25)
+
+}

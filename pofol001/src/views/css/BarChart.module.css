@@ -1,0 +1,32 @@
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar-container {
+  display: grid;
+  align-items: center;
+  margin-bottom: 10px;
+  grid-template-columns: 80px 80%;
+  gap: 5px;
+}
+
+.bar-label {
+  width: 40px;
+}
+
+.bar-fill {
+  height: 30px;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  flex-grow: 0;
+}
+
+.bar-percentage {
+  font-size: 0.8rem;
+}
