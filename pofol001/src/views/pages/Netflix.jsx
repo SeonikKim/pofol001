@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import LanguageSelect from "../components/Selects"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import VideoPlayer from '../components/VideoPlay';
 export const Netflix = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('korean');
 
@@ -54,11 +56,35 @@ export const Netflix = () => {
                                     </div>
 
                                 </div>
-                                
+                                {/* 추후 이메일 주소와 연동 */}
+                                <button className='NF-Start'>시작하기
+                                    <FontAwesomeIcon icon={faAngleRight} />
+                                </button>
                             </div>
                         </div>
                     </div>
-
+                    <div className='NF-About-Wrap'>
+                        <div className='NF-About'>
+                             <span>5,500원이면 만날 수 있는 넷플릭스.</span>
+                             <span>광고형 스탠다드 멤버십에 가입하세요.</span>
+                             <span>자세히 알아보기 <FontAwesomeIcon icon={faAngleRight} /></span>
+                        </div>
+                    </div>
+                    <div className='NF-TV'>
+                        <h2>TV로 즐기세요</h2>
+                        <span>스마트 TV, PlayStation, Xbox, Chromecast, Apple TV, 블루레이 플레이어 등 다양한 디바이스에서 시청하세요.</span>
+                        <div className='TV-Wrap'>
+                            
+                            <img
+                            alt=""
+                            src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
+                             data-uia="nmhp-card-animation-asset-image"
+                              class="NF-TV-Img"/>
+                              <div className='NF-TV-Container'>
+                              <VideoPlayer/>
+                              </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

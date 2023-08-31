@@ -116,14 +116,15 @@ body {
 
 /* 넷플릭스 CSS */
 .NetFlixWrap {
-  height: 100vh;
   display: flex;
   justify-content: center;
+  background: #000;
 }
 
 .NetFlixWrap .NF-Img {
   position: relative;
   width: 100%;
+
 }
 
 .NetFlixWrap .NF-Background {
@@ -133,6 +134,7 @@ body {
   background-position: center;
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .NetFlixWrap .NF-Shade {
@@ -141,9 +143,10 @@ body {
   align-items: center;
   position: absolute;
   top: 0;
-width: 100%;
-height: 100%;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 80%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 75%);
+
 }
 
 .NetFlixWrap .NF-Shade .NF-Inner {
@@ -151,7 +154,9 @@ height: 100%;
   color: #fff;
   margin-top: 30px;
   align-items: center;
+  height: 20rem;
 }
+
 .NetFlixWrap .NF-Shade .NF-SubInner1 {
   max-width: 90%;
   margin-top: 10px;
@@ -159,16 +164,18 @@ height: 100%;
   font-weight: 600;
   margin: auto;
   word-break: keep-all;
-  
+
 }
+
 .NetFlixWrap .NF-Shade .NF-SubInner {
   margin-top: 10px;
-  margin: auto;    
+  margin: auto;
   margin-top: 20px;
   max-width: 80%;
   font-size: 1.1em;
   word-break: keep-all;
 }
+
 .NetFlixWrap .NF-Shade .NF-SubInner .Email-Addr {
   width: 100%;
   padding: 1.25rem 1rem 0.25rem 1rem;
@@ -180,46 +187,52 @@ height: 100%;
   color: #fff;
   border-radius: 3px;
 }
-.input-wrapper {
+
+.NetFlixWrap .NF-Shade .NF-SubInner .input-wrapper {
   position: relative;
   margin-top: 30px;
 }
 
-.Email-Addr {
+.NetFlixWrap .NF-Shade .NF-SubInner .Email-Addr {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-.floating-label {
+.NetFlixWrap .NF-Shade .NF-SubInner .floating-label {
   position: absolute;
   left: 10px;
-  bottom: 10px; /* 기본 위치 설정 */
+  bottom: 25%;
   color: grey;
-  pointer-events: none; /* 라벨을 클릭할 수 없게 함 */
+  pointer-events: none;
+  /* 라벨을 클릭할 수 없게 함 */
   transition: all 0.3s;
 }
 
 /* input이 포커스되거나 내용이 있을 때 라벨을 위로 올림 */
-.Email-Addr:focus + .floating-label, 
-.Email-Addr:not(:placeholder-shown) + .floating-label {
-  transform: translateY(-20px); /* 위로 올리는 정도. 필요시 조정 가능 */
+.NetFlixWrap .NF-Shade .NF-SubInner .Email-Addr:focus+.floating-label,
+.Email-Addr:not(:placeholder-shown)+.floating-label {
+  transform: translateY(-20px);
   font-size: .8rem;
   margin-top: 20px;
   border: #fff;
 }
 
-
-
-
-
-
-
-
+.NF-Start {
+  height: 3rem;
+  width: 8rem;
+  background: #C11119;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
 
 .NetFlixWrap .NF-BackgroundImage {
   width: 100vw;
-  height: auto;
+  height: 80vh;
   display: block;
   min-height: 30rem;
 }
@@ -242,11 +255,13 @@ height: 100%;
 .NetFlixWrap .NF-Title {
   max-width: 100px;
 }
-.NetFlixWrap .NF-Header div:nth-child(2){
+
+.NetFlixWrap .NF-Header div:nth-child(2) {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .NetFlixWrap .NF-Lan-Select {
   height: 32px;
   width: 6rem;
@@ -254,7 +269,7 @@ height: 100%;
   border: 1px solid #dbdbdb;
   color: #fff;
   border-radius: 3px;
-  margin: 0 5px 0 0 ;
+  margin: 0 5px 0 0;
 }
 
 .NetFlixWrap .NF-Login {
@@ -266,7 +281,67 @@ height: 100%;
   border: none;
   margin-left: 10px;
 }
-.NetFlixWrap .NF-Login:hover {
-  background: rgb(193,17,25)
 
+.NetFlixWrap .NF-Login:hover {
+  background: rgb(193, 17, 25)
+}
+
+.NetFlixWrap .NF-About-Wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(120.35% 220% at 49.86% -6.29%, #e50914 0%, #0e1b4f 46.15%, #0d1121 100%);
+  height: 13rem;
+  margin: 16px 24px 0px;
+  padding: 30px;
+}
+
+.NetFlixWrap .NF-About-Wrap .NF-About {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.NF-TV {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.NF-TV span {
+  max-width: calc(100% - 3rem);
+  word-break: keep-all;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+
+
+.TV-Wrap{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(100% - 3rem);
+}
+.NF-TV-Img {
+  overflow: clip;
+  max-width: calc(100% - 3rem);
+  z-index: 2; 
+  display: flex;
+  margin: auto;
+}
+.NF-TV-Container {
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  max-width: calc(100% - 6rem);
+  display: flex;
+  top: 20%;
 }
