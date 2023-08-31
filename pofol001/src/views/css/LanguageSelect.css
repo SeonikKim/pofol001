@@ -1,0 +1,45 @@
+.language-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 4rem;  
+    height: 30px;  
+  }
+  
+  .globe-icon {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /*아이콘 위에서도 select를 클릭 가능*/
+    z-index: 1;
+    font-size: 1.3rem;
+    padding: 2px;
+  }
+  
+  .NF-Lan-Select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;         
+    height: 100%;        
+    z-index: 2;
+    opacity: 1;         
+    background: transparent;
+    border: 1px solid #fff;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: -9999px;
+    border: 1px solid #fff;
+    
+  }
+  
+
+  
+  /* 만약 select에 포커스될 때 특별한 스타일이 필요하다면 아래의 CSS를 추가하세요. */
+  .NF-Lan-Select:focus {
+    opacity: 1; 
+    /* 필요에 따라 다른 스타일도 추가할 수 있습니다. */
+  }
+  

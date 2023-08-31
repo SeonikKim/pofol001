@@ -150,19 +150,72 @@ height: 100%;
   text-align: center;
   color: #fff;
   margin-top: 30px;
+  align-items: center;
 }
 .NetFlixWrap .NF-Shade .NF-SubInner1 {
-  max-width: (100% - 3rem);
+  max-width: 90%;
   margin-top: 10px;
-  font-size: 1.6em;
+  font-size: 2em;
   font-weight: 600;
   margin: auto;
+  word-break: keep-all;
+  
 }
 .NetFlixWrap .NF-Shade .NF-SubInner {
   margin-top: 10px;
-  font-size: 1em;
-  font-weight: 500;
+  margin: auto;    
+  margin-top: 20px;
+  max-width: 80%;
+  font-size: 1.1em;
+  word-break: keep-all;
 }
+.NetFlixWrap .NF-Shade .NF-SubInner .Email-Addr {
+  width: 100%;
+  padding: 1.25rem 1rem 0.25rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  line-height: 1.5rem;
+  min-height: 16px;
+  font-size: 1rem;
+  z-index: 999;
+  color: #fff;
+  border-radius: 3px;
+}
+.input-wrapper {
+  position: relative;
+  margin-top: 30px;
+}
+
+.Email-Addr {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.floating-label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px; /* 기본 위치 설정 */
+  color: grey;
+  pointer-events: none; /* 라벨을 클릭할 수 없게 함 */
+  transition: all 0.3s;
+}
+
+/* input이 포커스되거나 내용이 있을 때 라벨을 위로 올림 */
+.Email-Addr:focus + .floating-label, 
+.Email-Addr:not(:placeholder-shown) + .floating-label {
+  transform: translateY(-20px); /* 위로 올리는 정도. 필요시 조정 가능 */
+  font-size: .8rem;
+  margin-top: 20px;
+  border: #fff;
+}
+
+
+
+
+
+
+
+
 
 .NetFlixWrap .NF-BackgroundImage {
   width: 100vw;
@@ -173,43 +226,45 @@ height: 100%;
 
 
 .NetFlixWrap .NF-Header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
+  margin: auto;
+  max-width: calc(100% - 3rem);
   display: flex;
-  justify-content: center;
-  color: white;
-  padding: 1rem 2rem;
   align-items: center;
+  justify-content: space-between;
+  position: static;
+  position: absolute;
+  left: 0;
+  right: 0;
   z-index: 999;
-  white-space: nowrap;
+  height: 5rem;
 }
 
 .NetFlixWrap .NF-Title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  margin-right: auto;
+  max-width: 100px;
 }
-
+.NetFlixWrap .NF-Header div:nth-child(2){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .NetFlixWrap .NF-Lan-Select {
-  height: 30px;
+  height: 32px;
   width: 6rem;
   background: transparent;
   border: 1px solid #dbdbdb;
   color: #fff;
   border-radius: 3px;
-  margin: 0 2rem;
+  margin: 0 5px 0 0 ;
 }
 
 .NetFlixWrap .NF-Login {
-  height: 30px;
-  width: 4rem;
+  height: 32px;
+  width: 4.5rem;
   background: #E50914;
   color: white;
-  border-radius: 3px;
-  margin: 0;
+  border-radius: 4px;
+  border: none;
+  margin-left: 10px;
 }
 .NetFlixWrap .NF-Login:hover {
   background: rgb(193,17,25)
