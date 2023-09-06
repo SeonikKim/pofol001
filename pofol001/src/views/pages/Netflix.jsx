@@ -83,23 +83,76 @@ export const Netflix = () => {
                                 data-uia="nmhp-card-animation-asset-image"
                                 class="NF-TV-Img" />
                             <div className='NF-TV-Container'>
-                                <VideoPlayer />
+                                <VideoPlayer src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" />
                             </div>
                         </div>
+
                     </div>
                     <div className='NF-DefWrap'>
                         <h2>어디서나 자유롭게 시청하세요</h2>
                         <span>각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로 스트리밍하세요.</span>
+                        <div className='TV-Wrap'>
+
+                            <img
+                                alt=""
+                                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png"
+                                data-uia="nmhp-card-animation-asset-image"
+                                class="NF-TV-Img" />
+                            <div className='NF-TV-Container'>
+                                <VideoPlayer src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v" />
+
+                            </div>
+                        </div>
                     </div>
 
                     <div className='NF-DefWrap'>
                         <h2>어린이 전용 프로필을 만들어 보세요</h2>
                         <span>자기만의 공간에서 좋아하는 캐릭터와 즐기는 신나는 모험. 자녀에게 이 특별한 경험을 선물하세요. 넷플릭스 회원이라면 무료입니다.</span>
+                        <div className='TV-Wrap'>
+
+                            <img
+                                alt=""
+                                src="https://occ-0-3077-988.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABdl4VeWgVycbbzJBV1KbIpMScxU_I4h6uTvNRpFab-65jsTTqI0V-g-4Jq4CLaIVqx-wbKAwA_Ee8KhZyTb0SFJ5tK2mifI-GYEB.png?r=15b"
+                                data-uia="nmhp-card-animation-asset-image"
+                                class="NF-TV-Img" />
+
+                        </div>
 
                     </div>
                     <div className='NF-DefWrap'>
                         <h2>즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요</h2>
                         <span>광고 없는 멤버십에서만 이용 가능합니다.</span>
+                        <div className='TV-Wrap'>
+
+                            <img
+                                alt=""
+                                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
+                                data-uia="nmhp-card-animation-asset-image"
+                                class="NF-TV-Img" />
+                            <div className='NF-TV-Container'>
+                                <div>
+                                    <img
+                                        alt=""
+                                        src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"
+                                        data-uia="nmhp-card-animation-asset-image"
+                                    />
+                                </div>
+                                <div>
+                                    <div>기묘한 이야기</div>
+                                    <div>저장 중...</div>
+
+                                </div>
+                                <div>
+                                    <img
+                                        alt=""
+                                        src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif"
+                                        data-uia="nmhp-card-animation-asset-image"
+                                    />
+
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
