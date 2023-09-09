@@ -52,12 +52,15 @@ export const Netflix = () => {
 
                                     <div class="input-wrapper">
                                         <input type="text" id="email" className="Email-Addr" placeholder=" " required />
-                                        <label for="email" class="floating-label">이메일 주소</label>
+                                        <label for="email" class="floating-label">
+                                            {selectedLanguage === 'korean' ? '이메일 주소' : 'Email address'}
+                                        </label>
                                     </div>
 
                                 </div>
                                 {/* 추후 이메일 주소와 연동 */}
-                                <button className='NF-Start'>시작하기
+                                <button className='NF-Start'>
+                                {selectedLanguage === 'korean' ? '시작하기' : 'Get Started'}
                                     <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                             </div>
@@ -66,15 +69,38 @@ export const Netflix = () => {
                     <div className='NF-DefWrap'>
                         <div className='NF-About-Wrap'>
                             <div className='NF-About'>
-                                <span>5,500원이면 만날 수 있는 넷플릭스.</span>
-                                <span>광고형 스탠다드 멤버십에 가입하세요.</span>
-                                <span>자세히 알아보기 <FontAwesomeIcon icon={faAngleRight} /></span>
+                                <span>
+                                {selectedLanguage === 'korean' ? '5,500원이면 만날 수 있는 넷플릭스.' 
+                                : 
+                                'The Netflix you love for just KRW5,500.'}
+                                </span>
+                                <span>
+                                {selectedLanguage === 'korean' ? '광고형 스탠다드 멤버십에 가입하세요.' 
+                                :
+                                 'Get the Standard with ads plan.'}
+                                </span>
+                                <span>  
+                                      {selectedLanguage === 'korean' ? '자세히 알아보기' 
+                                      :
+                                       'Learn More'}
+                                    <FontAwesomeIcon icon={faAngleRight} />
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div className='NF-DefWrap'>
-                        <h2>TV로 즐기세요</h2>
-                        <span>스마트 TV, PlayStation, Xbox, Chromecast, Apple TV, 블루레이 플레이어 등 다양한 디바이스에서 시청하세요.</span>
+                        <h2>
+                        {selectedLanguage === 'korean' ? 'TV로 즐기세요' 
+                                      :
+                                       'Enjoy on your TV'}
+                        </h2>
+                               
+                        <span>
+                           
+                            {selectedLanguage === 'korean' ? ' 스마트 TV, PlayStation, Xbox, Chromecast, Apple TV, 블루레이 플레이어 등 다양한 디바이스에서 시청하세요.' 
+                                      :
+                                       'Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.'}
+                            </span>
                         <div className='TV-Wrap'>
 
                             <img
@@ -89,8 +115,16 @@ export const Netflix = () => {
 
                     </div>
                     <div className='NF-DefWrap'>
-                        <h2>어디서나 자유롭게 시청하세요</h2>
-                        <span>각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로 스트리밍하세요.</span>
+                        <h2>
+                        {selectedLanguage === 'korean' ? '어디서나 자유롭게 시청하세요' 
+                                      :
+                                       'Watch everywhere.'}
+                        </h2>
+                        <span>
+                        {selectedLanguage === 'korean' ? '각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로 스트리밍하세요.' 
+                                      :
+                                       'Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.'}
+                        </span>
                         <div className='TV-Wrap'>
 
                             <img
@@ -106,8 +140,18 @@ export const Netflix = () => {
                     </div>
 
                     <div className='NF-DefWrap'>
-                        <h2>어린이 전용 프로필을 만들어 보세요</h2>
-                        <span>자기만의 공간에서 좋아하는 캐릭터와 즐기는 신나는 모험. 자녀에게 이 특별한 경험을 선물하세요. 넷플릭스 회원이라면 무료입니다.</span>
+                        <h2>
+                        {selectedLanguage === 'korean' ? '어린이 전용 프로필을 만들어 보세요' 
+                                      :
+                                       'Create profiles for kids'}
+                        </h2>
+                        <span>
+                            
+                            {selectedLanguage === 'korean' ? '자기만의 공간에서 좋아하는 캐릭터와 즐기는 신나는 모험. 자녀에게 이 특별한 경험을 선물하세요. 넷플릭스 회원이라면 무료입니다.' 
+                                      :
+                                       'Send kids on adventures with their favorite characters in a space made just for them—free with your membership.'}
+                            </span>
+                        
                         <div className='TV-Wrap'>
 
                             <img
@@ -120,8 +164,16 @@ export const Netflix = () => {
 
                     </div>
                     <div className='NF-DefWrap'>
-                        <h2>즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요</h2>
-                        <span>광고 없는 멤버십에서만 이용 가능합니다.</span>
+                        <h2>
+                        {selectedLanguage === 'korean' ? '즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요' 
+                                      :
+                                       'Download your shows to watch offline'}
+                        </h2>
+                        <span>
+                        {selectedLanguage === 'korean' ? '광고 없는 멤버십에서만 이용 가능합니다.' 
+                                      :
+                                       'Only available on ad-free plans.'}
+                        </span>
                         <div className='TV-Wrap'>
 
                             <img
@@ -138,8 +190,16 @@ export const Netflix = () => {
                                     />
                                 </div>
                                 <div>
-                                    <div>기묘한 이야기</div>
-                                    <div>저장 중...</div>
+                                    <div>
+                                    {selectedLanguage === 'korean' ? '기묘한 이야기' 
+                                      :
+                                       'Stranger Things'}
+                                    </div>
+                                    <div>
+                                    {selectedLanguage === 'korean' ? '저장 중...' 
+                                      :
+                                       'Downloading...'}
+                                    </div>
 
                                 </div>
                                 <div>
