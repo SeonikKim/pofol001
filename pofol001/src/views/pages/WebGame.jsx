@@ -1,3 +1,5 @@
+import '../css/WebGame.css'
+
 export const Webgame = () => {
     return (
         <>

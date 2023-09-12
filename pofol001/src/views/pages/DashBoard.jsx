@@ -1,3 +1,4 @@
+import '../css/DashBoard.css'
 export const DashBoard = () => {
     return (
         <>

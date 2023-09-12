@@ -1,3 +1,4 @@
+import '../css/Weather.css'
 export const Weather = () => {
     return (
         <>

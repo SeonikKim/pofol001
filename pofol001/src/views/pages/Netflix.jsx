@@ -3,6 +3,8 @@ import LanguageSelect from "../components/Selects"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import VideoPlayer from '../components/VideoPlay';
+import '../css/Netflix.css';
+
 export const Netflix = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('korean');
 
