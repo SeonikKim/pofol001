@@ -3,6 +3,7 @@
     text-align: center;
     font-family: Arial, sans-serif;
     overflow-y: hidden;
+    
 }
 
 .Title {
@@ -31,6 +32,7 @@
     padding: 5px 5px; 
     grid-column-start: var(--group);  /* 원소의  열*/
     grid-row-start: var(--period);    /* 원소의  행*/
+    
 }
 
 .element:hover {
