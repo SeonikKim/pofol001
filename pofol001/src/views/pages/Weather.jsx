@@ -3,73 +3,72 @@ import '../css/Weather.css';
 
 export const Weather = () => {
     const API_KEY = "163c2c5f76b523d8d2147930060e9bb9";
-    const [forecast, setForecast] = useState(null);
-    const [city, setCity] = useState(null);
+    const [forecast, setForecast] = useState([]);
+    const [city, setCity] = useState('Seoul');
 
     useEffect(() => {
+        const fetchWeatherData = async (latitude, longitude) => {
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric&lang=kr`);
+                const data = await response.json();
+                setForecast(data.list);
+            } catch (error) {
+                console.error('Error fetching the weather data', error);
+            }
+        };
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-                fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
+                fetchWeatherData(position.coords.latitude, position.coords.longitude);
             }, () => {
-                // 위치 정보를 가져오지 못한 경우 기본 도시로 서울을 설정합니다.
                 fetchWeatherByCity('Seoul');
-
             });
         } else {
-            // Geolocation을 지원하지 않는 브라우저인 경우
             fetchWeatherByCity('Seoul');
         }
     }, []);
 
-    const fetchWeatherByCoords = (lat, lon) => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`)
+    const fetchWeatherByCity = (selectedCity) => {
+        setCity(selectedCity);
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&appid=${API_KEY}&units=metric&lang=kr`)
             .then(response => response.json())
-            .then(data => setForecast(data.list))
-            .catch(error => console.error('Error fetching the weather data', error));
-    }
-
-    const fetchWeatherByCity = (city) => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=kr`)
-            .then(response => response.json())
-            .then(data => setForecast(data.list))
+            .then(data => {
+                setForecast(data.list);
+            })
             .catch(error => console.error('Error fetching the weather data', error));
     }
 
     const handleCityChange = (event) => {
-        setCity(event.target.value);
         fetchWeatherByCity(event.target.value);
     }
-    const NameToKor = {
-        "Seoul": "서울",
-        "Busan": "부산",
-        "Incheon": "인천",
-        "Daegu": "대구",
-        "Daejeon": "대전",
-        "Gwangju": "광주",
-        "Suwon": "수원",
-        "Ulsan": "울산",
-        "Seongnam": "성남",
-        "Goyang": "고양",
-        "Yongin": "용인",
-        "Bucheon": "부천",
-        "Ansan": "안산",
-        "Jeju": "제주",
-        "Anyang": "안양",
-        "Gimhae": "김해",
-        "Pohang": "포항",
-        "Cheongju": "청주"
-    };
-    
+
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(startOfDay);
+    endOfDay.setDate(startOfDay.getDate() + 1);
+
+    const todayForecast = forecast.filter(entry => {
+        const entryDate = new Date(entry.dt_txt.replace(" ", "T"));
+        return entryDate >= startOfDay && entryDate < endOfDay;
+    });
+
+    const subsequentForecast = forecast.filter(entry => {
+        const entryDate = new Date(entry.dt_txt.replace(" ", "T"));
+        return entryDate >= endOfDay;
+    });
+
+    //요일
     const getKoreanDayOfWeek = (dateStr) => {
         const date = new Date(dateStr);
+        date.setUTCHours(date.getUTCHours() +9); // UTC 기준으로 9시간 뺌
         const daysInKorean = ["일", "월", "화", "수", "목", "금", "토"];
         return daysInKorean[date.getUTCDay()];
     }
-    
-    return (
-        <div className="MainWrap">
-            <h1 className="Title">날씨정보페이지</h1>
 
+return (
+    <div className="Weather-Wrap">
+        <h1 className="Title">날씨정보페이지</h1>
+      
             <select value={city} onChange={handleCityChange}>
                 <option value="Seoul">서울</option>
                 <option value="Busan">부산</option>
@@ -91,20 +90,28 @@ export const Weather = () => {
                 <option value="Cheongju">청주</option>
             </select>
 
-            <div className='forecast_text'>선택 위치: {NameToKor[city]}</div>
-            {forecast ? (
-                forecast.map((entry, index) => (
+            <div className='forecast-row'>
+                {todayForecast.map((entry, index) => (
                     <div key={index} className="forecast-entry">
-                        <div className='forecast_text'>요일: {getKoreanDayOfWeek(entry.dt_txt)}</div>
                         <div className='forecast_text'>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</div>
                         <div className='forecast_text'>온도: {entry.main.temp}°C</div>
                         <div className='forecast_text'>날씨: {entry.weather[0].description}</div>
                         <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
                     </div>
-                ))
-            ) : (
-                <p>날씨 데이터를 가져오는 중...</p>
-            )}
+                ))}
+        </div>
+
+            <div className='forecast-col'>
+                {subsequentForecast.map((entry, index) => (
+                    <div key={index} className="forecast-entry">
+                 <div className='forecast_text'>요일: {getKoreanDayOfWeek(entry.dt_txt)}</div>
+                        <div className='forecast_text'>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</div>
+                        <div className='forecast_text'>온도: {entry.main.temp}°C</div>
+                        <div className='forecast_text'>날씨: {entry.weather[0].description}</div>
+                        <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
