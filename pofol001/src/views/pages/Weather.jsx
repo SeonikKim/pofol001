@@ -5,6 +5,9 @@ export const Weather = () => {
     const API_KEY = "163c2c5f76b523d8d2147930060e9bb9";
     const [forecast, setForecast] = useState([]);
     const [city, setCity] = useState('Seoul');
+    const [showModal, setShowModal] = useState("");
+    const [selectedWeather, setSelectedWeather] = useState("");
+
 
     useEffect(() => {
         const fetchWeatherData = async (latitude, longitude) => {
@@ -13,7 +16,7 @@ export const Weather = () => {
                 const data = await response.json();
                 setForecast(data.list);
             } catch (error) {
-                console.error('Error fetching the weather data', error);
+                console.error('데이터 에러', error);
             }
         };
 
@@ -35,7 +38,7 @@ export const Weather = () => {
             .then(data => {
                 setForecast(data.list);
             })
-            .catch(error => console.error('Error fetching the weather data', error));
+            .catch(error => console.error('데이터 에러', error));
     }
 
     const handleCityChange = (event) => {
@@ -60,15 +63,53 @@ export const Weather = () => {
     //요일
     const getKoreanDayOfWeek = (dateStr) => {
         const date = new Date(dateStr);
-        date.setUTCHours(date.getUTCHours() +9); // UTC 기준으로 9시간 뺌
+        date.setUTCHours(date.getUTCHours() + 9);
         const daysInKorean = ["일", "월", "화", "수", "목", "금", "토"];
         return daysInKorean[date.getUTCDay()];
     }
 
-return (
-    <div className="Weather-Wrap">
-        <h1 className="Title">날씨정보페이지</h1>
-      
+
+
+
+    ///추가
+
+    const handleEntryClick = (day) => {
+        setSelectedWeather(groupedForecast[day]);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const groupedForecast = subsequentForecast.reduce((acc, entry) => {
+        const dayOfWeek = getKoreanDayOfWeek(entry.dt_txt);
+        if (!acc[dayOfWeek]) acc[dayOfWeek] = [];
+        acc[dayOfWeek].push(entry);
+        return acc;
+    }, {});
+
+    const dailyForecasts = Object.keys(groupedForecast).map(day => {
+        const temps = groupedForecast[day].map(entry => entry.main.temp);
+        const uniqueWeatherDescriptions = [...new Set(groupedForecast[day].map(entry => entry.weather[0].description))];
+        const weatherDescription = uniqueWeatherDescriptions.length === 1 ? uniqueWeatherDescriptions[0] : groupedForecast[day][0].weather[0].description;
+        const weatherIcon = groupedForecast[day][0].weather[0].icon;
+
+        return {
+            ...groupedForecast[day][0],
+            minTemp: Math.min(...temps),
+            maxTemp: Math.max(...temps),
+            dayWeatherDescription: weatherDescription,
+            dayWeatherIcon: weatherIcon
+        };
+    });
+
+
+
+    return (
+        <div className="Weather-Wrap">
+            <h1 className="Title">날씨정보페이지</h1>
+
             <select value={city} onChange={handleCityChange}>
                 <option value="Seoul">서울</option>
                 <option value="Busan">부산</option>
@@ -99,19 +140,37 @@ return (
                         <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
                     </div>
                 ))}
-        </div>
+            </div>
 
             <div className='forecast-col'>
-                {subsequentForecast.map((entry, index) => (
-                    <div key={index} className="forecast-entry">
-                 <div className='forecast_text'>요일: {getKoreanDayOfWeek(entry.dt_txt)}</div>
-                        <div className='forecast_text'>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</div>
-                        <div className='forecast_text'>온도: {entry.main.temp}°C</div>
-                        <div className='forecast_text'>날씨: {entry.weather[0].description}</div>
-                        <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
+                {dailyForecasts.map((entry, index) => (
+                    <div key={index} className="forecast-entry" onClick={() => handleEntryClick(getKoreanDayOfWeek(entry.dt_txt))}>
+                        <div className='forecast_text'>요일: {getKoreanDayOfWeek(entry.dt_txt)}</div>
+                        <img src={`http://openweathermap.org/img/wn/${entry.dayWeatherIcon}.png`} alt={entry.dayWeatherDescription} />
+                        <div className='forecast_text'>최저: {entry.minTemp}°C</div>
+                        <div className='forecast_text'>최고: {entry.maxTemp}°C</div>
+                        {/* <div className='forecast_text'>날씨: {entry.dayWeatherDescription}</div> */}
+                      
                     </div>
                 ))}
             </div>
+
+            {showModal && selectedWeather && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={handleCloseModal}>&times;</span>
+                        <h2>{getKoreanDayOfWeek(selectedWeather[0].dt_txt)}요일 날씨</h2>
+                        {selectedWeather.map((entry, idx) => (
+                            <div key={idx} className='modal-item'>
+                                <p>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</p>
+                                <p>온도: {entry.main.temp}°C</p>
+                                <p>날씨: {entry.weather[0].description}</p>
+                                <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
