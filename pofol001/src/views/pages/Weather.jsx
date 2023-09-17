@@ -135,7 +135,7 @@ export const Weather = () => {
                 {todayForecast.map((entry, index) => (
                     <div key={index} className="forecast-entry">
                         <div className='forecast_text'>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</div>
-                        <div className='forecast_text'>온도: {entry.main.temp}°C</div>
+                        <div className='forecast_text'>온도: {entry.main.temp}°</div>
                         <div className='forecast_text'>날씨: {entry.weather[0].description}</div>
                         <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
                     </div>
@@ -145,10 +145,10 @@ export const Weather = () => {
             <div className='forecast-col'>
                 {dailyForecasts.map((entry, index) => (
                     <div key={index} className="forecast-entry" onClick={() => handleEntryClick(getKoreanDayOfWeek(entry.dt_txt))}>
-                        <div className='forecast_text'>요일: {getKoreanDayOfWeek(entry.dt_txt)}</div>
+                        <div className='forecast_text'> {getKoreanDayOfWeek(entry.dt_txt)}</div>
                         <img src={`http://openweathermap.org/img/wn/${entry.dayWeatherIcon}.png`} alt={entry.dayWeatherDescription} />
-                        <div className='forecast_text'>최저: {entry.minTemp}°C</div>
-                        <div className='forecast_text'>최고: {entry.maxTemp}°C</div>
+                        <div className='forecast_text'> {entry.minTemp}°</div>
+                        <div className='forecast_text'> {entry.maxTemp}°</div>
                         {/* <div className='forecast_text'>날씨: {entry.dayWeatherDescription}</div> */}
                       
                     </div>
@@ -156,21 +156,21 @@ export const Weather = () => {
             </div>
 
             {showModal && selectedWeather && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={handleCloseModal}>&times;</span>
-                        <h2>{getKoreanDayOfWeek(selectedWeather[0].dt_txt)}요일 날씨</h2>
-                        {selectedWeather.map((entry, idx) => (
-                            <div key={idx} className='modal-item'>
-                                <p>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</p>
-                                <p>온도: {entry.main.temp}°C</p>
-                                <p>날씨: {entry.weather[0].description}</p>
-                                <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
-                            </div>
-                        ))}
-                    </div>
+    <div className="modal">
+        <div className="modal-content">
+            <span className="close" onClick={handleCloseModal}>&times;</span>
+            <h2>{getKoreanDayOfWeek(selectedWeather[0].dt_txt)}요일 날씨</h2>
+            {selectedWeather.map((entry, idx) => (
+                <div key={idx} className='modal-item'>
+                    <p>시간: {entry.dt_txt.split(" ")[1].slice(0, 5)}</p>
+                    <p>온도: {entry.main.temp}°C</p>
+                    <p>날씨: {entry.weather[0].description}</p>
+                    <img src={`http://openweathermap.org/img/wn/${entry.weather[0].icon}.png`} alt={entry.weather[0].description} />
                 </div>
-            )}
+            ))}
+        </div>
+    </div>
+)}
         </div>
     );
 }
