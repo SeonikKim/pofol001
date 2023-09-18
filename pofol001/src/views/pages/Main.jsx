@@ -12,14 +12,14 @@ export const Main = () => {
 
                 <div className="Items_Wrap">
                     <div className="Item">
-                        <span className="ItemTitle">About Me</span>
+                        <span className="ItemTitle">자기소개</span>
                         <span className="ItemContents">
                             "C언어 10개월, 프론트앤드 2개월 경험. 사용자 중심의 웹 환경을 만들기 위한 열정과 전문성을 가진 개발자입니다. 기술적 도전을 추구하며 팀과 함께 성장하고자 합니다."
                         </span>
 
                     </div>
                     <div className="Item">
-                        <span className="ItemTitle">Certifications</span>
+                        <span className="ItemTitle">자격증</span>
                         <span className="ItemContents">
                             전산응용기계제도 기능사<br />
                             컴퓨터활용능력 2급<br />
@@ -30,7 +30,7 @@ export const Main = () => {
                     </div>
 
                     <div className="Item">
-                        <span className="ItemTitle">Development Experiences</span>
+                        <span className="ItemTitle">개발 경험</span>
                         <span className="ItemContents">
                             C언어<br />
                             CCTV를 활용한 실시간 객체 탐지<br />
@@ -39,14 +39,14 @@ export const Main = () => {
                             사내 ERP서비스
                         </span>
                     </div>
-                    <div className="Item">
-                        <span className="ItemTitle">Development Philosophies</span>
+                    {/* <div className="Item">
+                        <span className="ItemTitle">개발 철학</span>
                         <span className="ItemContents">
                             1. 사용자 중심<br />
-                            <br />1. 사용자의 편리함<br />
-                            <br />1. 사용자의 직관성<br />
+                            <br />2. 사용자의 편리함<br />
+                            <br />3. 사용자의 직관성<br />
                         </span>
-                    </div>
+                    </div> */}
                     <div className="Item">
                         <span className="ItemTitle">My Skills</span>
                         <BarChart />
@@ -62,7 +62,7 @@ export const Main = () => {
 
                     </div>
                     <div className="Item WithBtn">
-                        <span className="ItemTitle">자동차 소개 페이지 구현</span>
+                        <span className="ItemTitle">웹접근성을 이용한 페이지</span>
                         <span className="ItemContents"></span>
                         <Link to="/carpage" className="defBtn">
                             <FontAwesomeIcon icon={faAngleRight} />
@@ -70,7 +70,7 @@ export const Main = () => {
                     </div>
 
                     <div className="Item WithBtn">
-                        <span className="ItemTitle">Dash Board</span>
+                        <span className="ItemTitle">Dash Board(반응형)</span>
                         <span className="ItemContents"></span>
                              <Link to="/dashboard" className="defBtn">
                             <FontAwesomeIcon icon={faAngleRight} />

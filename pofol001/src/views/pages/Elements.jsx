@@ -1028,7 +1028,7 @@ const elementsData = [
 export const Elements = () => {
     return (
         <>
-            <div className="MainWrap">
+            <div className="Elements-Wrap">
                 <h1 className="Title">원소주기율표</h1>
                 <div className="periodic-table">
                     {elementsData.map(element => (
